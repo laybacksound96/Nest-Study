@@ -1,13 +1,16 @@
-import { IsString, IsArray } from 'class-validator';
-import { Character } from '../schema/Character.schema';
+import { Type } from 'class-transformer';
+import { IsString, IsArray, ValidateNested } from 'class-validator';
+import { CreateCharacterDto } from './create-character.dto';
 
 export class CreateUserDto {
   @IsString()
-  id: string;
+  readonly id: string;
 
   @IsString()
-  name: string;
+  readonly name: string;
 
   @IsArray()
-  Characters?: Character[];
+  @ValidateNested({ each: true })
+  @Type(() => CreateCharacterDto)
+  readonly Characters: CreateCharacterDto[];
 }
