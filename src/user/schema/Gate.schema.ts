@@ -3,7 +3,7 @@ import { HydratedDocument } from 'mongoose';
 export type GateDocument = HydratedDocument<Gate>;
 @Schema()
 export class Gate {
-  @Prop({ type: Number, unique: true })
+  @Prop()
   gateIndex: number;
   @Prop({ required: true, default: false })
   isHardDifficulty: boolean;

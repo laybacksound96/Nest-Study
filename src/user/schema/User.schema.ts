@@ -15,4 +15,11 @@ export class User {
   @Prop({ type: [{ type: CharacterSchema, ref: 'Character' }] })
   Characters: Character[];
 }
-export const UserSchema = SchemaFactory.createForClass(User);
+
+const UserSchema = SchemaFactory.createForClass(User);
+UserSchema.pre('save', async function (next) {
+  console.log(this.Characters);
+  next();
+});
+
+export { UserSchema };

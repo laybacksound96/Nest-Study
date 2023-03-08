@@ -3,6 +3,7 @@ import { HydratedDocument } from 'mongoose';
 import { Commander, CommanderSchema } from './Commander.schema';
 
 export type CharacterDocument = HydratedDocument<Character>;
+
 @Schema()
 export class Character {
   @Prop({ required: true })
